@@ -1,4 +1,8 @@
-library(GetDFPData2)
+library(checkpoint)
+
+checkpoint('2019-01-01')
+
+library(GetDFPData)
 library(tidyverse)
 
 df_info <- get_info_companies(cache_folder = tempdir()) |>
