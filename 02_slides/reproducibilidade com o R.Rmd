@@ -1,0 +1,34 @@
+---
+title: "R and Financial Datasets"
+author: "Marcelo Perlin"
+date: "UseRS PUC-RS, February 2019"
+output:
+  slidy_presentation:
+      incremental: false
+  ioslides_presentation: default
+bibliography: ['mybib.bib', 'mybib2.bib']
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(cache = TRUE, message = FALSE)
+
+knitr::write_bib(x = c('renv', 
+                       'quantmod','GetHFData','BatchGetSymbols', 'GetDFPData', 'ustyc','Quandl','finreportr','tidyquant', 'rbcb'), 
+                 file = 'mybib.bib')
+
+```
+
+# Who am I?
+
+Teacher and researcher at EA/UFRGS
+
+Author of several papers, CRAN packages and a book, "Processamento e Análise de Dados Financeiros e Econômicos com o R", available in Amazon.
+
+More details about my work in the [homepage](https://www.msperlin.com/blog) 
+
+
+# Introduction
+
+
+
+# References {-}
