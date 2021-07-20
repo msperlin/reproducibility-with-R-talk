@@ -1,3 +1,3 @@
 #! /bin/bash 
 
-docker build -t example_docker --no-cache .
+docker build -t example_docker .

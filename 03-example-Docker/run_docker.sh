@@ -1,3 +1,6 @@
 #! /bin/bash 
 
-docker run -v /home/msperlin/Desktop/output:/home/output example_docker 
+my_path='/home/msperlin/Desktop/output'
+mkdir $my_path
+
+docker run -v "$my_path":/home/msperlin/output example_docker 
