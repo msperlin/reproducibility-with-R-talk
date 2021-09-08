@@ -1,15 +1,6 @@
-create_plot <- function(df_in) {
+create_plot <- function(df_plot) {
   
-  tb_sector <- df_in |>
-    group_by(SETOR_ATIV) |>
-    count(name = 'freq') |>
-    ungroup() |>
-    arrange(desc(freq)) |>
-    slice_max(n = 10, order_by = freq)
-  
-  tb_sector 
-  
-  p <- ggplot(tb_sector, aes(x = reorder(SETOR_ATIV, freq), 
+  p <- ggplot(df_plot, aes(x = reorder(SETOR_ATIV, freq), 
                              y = freq)) + 
     geom_col() + 
     theme_minimal() + coord_flip() + 
@@ -19,4 +10,15 @@ create_plot <- function(df_in) {
          y = 'Frequency')
   
   return(p)
+}
+
+organize_data <- function(df_info) {
+  tb_sector <- df_info |>
+    group_by(SETOR_ATIV) |>
+    count(name = 'freq') |>
+    ungroup() |>
+    arrange(desc(freq)) |>
+    slice_max(n = 10, order_by = freq)
+  
+  tb_sector 
 }
