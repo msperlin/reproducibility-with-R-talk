@@ -1,0 +1,106 @@
+---
+title: "Reproducibility and Science"
+subtitle: "R workshop"
+author: "Marcelo S. Perlin"
+institute: "UFRGS"
+date: "2021/10/27 (updated: `r Sys.Date()`)"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(echo=FALSE)
+```
+
+
+# Introduction
+
+Governance and reproducibility are required policies for a sustainable science!
+
+--
+
+- Can we trust results by their face values?
+- Can we trust academics by their word? 
+
+--
+
+Solution?
+
+--
+
+.pull-left[
+
+```{r, out.width=250}
+knitr::include_graphics('figs/359_9_f2.jpeg')
+```
+
+]
+
+.pull-right[
+
+- All data and code should be shared and reproducible
+- Academic governance and self-audit
+- If results are not reproducible, be transparent about it and retract if needed
+- 
+
+]
+---
+
+# Reproducibility failures in academia
+
+## [Reinhart-Rogoff](https://theconversation.com/the-reinhart-rogoff-error-or-how-not-to-excel-at-economics-13646) error
+
+```{r, echo=FALSE, out.width='50%'}
+knitr::include_graphics('figs/reinhart-rogoff.png')
+```
+
+--
+
+## The recent [case](https://retractionwatch.com/2021/07/08/researchers-forfeit-10000-award-when-papers-findings-cant-be-replicated/) of _Journal of Finance_:
+
+```{r, echo=FALSE, out.width='50%'}
+knitr::include_graphics('figs/retraction-jf.png')
+```
+
+---
+
+# Why we lack reproducibility?
+
+- researchers are human!
+
+--
+
+- bad incentives: publish or perish! 
+
+-- 
+
+- bad computational policies (aka "it works on my machine")
+
+---
+
+# Tools for reproducibility
+
+- Version control (data/code/..) 
+  - Github (and friends)
+  - Dropbox/GoogleDrive/OneDrive/...
+
+--
+
+- Intructions for running the code (perhaps in a code script?)
+
+--
+
+- Well written paper! 
+
+---
+
+# R workshop
+
+All code and data available at [Github](https://github.com/msperlin/reproducibility-with-R-talk)
+
+- 
