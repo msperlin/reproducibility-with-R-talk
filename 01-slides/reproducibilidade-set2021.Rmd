@@ -20,16 +20,22 @@ knitr::opts_chunk$set(echo=FALSE)
 
 # Introduction
 
-Governance and reproducibility are required policies for a sustainable science!
+[What is science?](https://www.google.com/search?q=what+is+science&oq=what+is+science&aqs=chrome.0.0i512l10.2032j0j7&sourceid=chrome&ie=UTF-8)
+
+> the intellectual and practical activity encompassing the systematic study of the structure and behaviour of the physical and natural world through observation and experiment. Oxford English Dictionary
 
 --
 
-- Can we trust results by their face values?
-- Can we trust academics by their word? 
+However, academic research is usually conducted in a black-box fashion
 
---
+```{r, out.width=500}
+knitr::include_graphics('figs/Sidney-Harris-cartoon-main-image.jpg')
+```
 
-Solution?
+
+# How to solve this problem?
+
+Reproducibility!
 
 --
 
@@ -49,6 +55,7 @@ knitr::include_graphics('figs/359_9_f2.jpeg')
 - 
 
 ]
+
 ---
 
 # Reproducibility failures in academia
