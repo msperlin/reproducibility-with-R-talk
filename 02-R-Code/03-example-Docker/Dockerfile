@@ -1,10 +1,8 @@
 FROM rocker/tidyverse:4.1.0
 
-#RUN useradd --create-home msperlin
+RUN R -e "install.packages('remotes')"
 
-#USER msperlin
-
-RUN R -e "install.packages('GetDFPData2')"
+RUN R -e "remotes::install_github('msperlin/GetDFPData2')"
 
 WORKDIR /home/msperlin
 

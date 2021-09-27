@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Reproducibility and Science</title>
+    <title>Code Reproducibility with R</title>
     <meta charset="utf-8" />
     <meta name="author" content="Marcelo S. Perlin" />
-    <script src="libs/header-attrs-2.10/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.11/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
   </head>
@@ -12,11 +12,10 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# Reproducibility and Science
-## R workshop
+# Code Reproducibility with R
 ### Marcelo S. Perlin
-### UFRGS
-### 2021/10/27 (updated: 2021-09-17)
+### UFRGS/EA
+### 2021/10/27 (updated: 2021-09-27)
 
 ---
 
@@ -28,18 +27,40 @@ class: center, middle, inverse, title-slide
 
 [What is science?](https://www.google.com/search?q=what+is+science&amp;oq=what+is+science&amp;aqs=chrome.0.0i512l10.2032j0j7&amp;sourceid=chrome&amp;ie=UTF-8)
 
+--
+
 &gt; the intellectual and practical activity encompassing the systematic study of the structure and behaviour of the physical and natural world through observation and experiment. Oxford English Dictionary
 
 --
 
-However, academic research is usually conducted in a black-box fashion
+However, academic research is usually conducted in a black-box fashion:
 
 &lt;img src="figs/Sidney-Harris-cartoon-main-image.jpg" width="500" /&gt;
 
+---
+
+# Reproducibility failures in academia
+
+.pull-left[
+## [Reinhart-Rogoff](https://theconversation.com/the-reinhart-rogoff-error-or-how-not-to-excel-at-economics-13646) error
+
+&lt;img src="figs/reinhart-rogoff.png" width="100%" /&gt;
+
+]
+
+.pull-right[
+
+## The recent [case](https://retractionwatch.com/2021/07/08/researchers-forfeit-10000-award-when-papers-findings-cant-be-replicated/) of _Journal of Finance_:
+
+&lt;img src="figs/retraction-jf.png" width="100%" /&gt;
+
+]
+
+---
 
 # How to solve this problem?
 
-Reproducibility!
+Governance and reproducibility!
 
 --
 
@@ -52,59 +73,134 @@ Reproducibility!
 .pull-right[
 
 - All data and code should be shared and reproducible
-- Academic governance and self-audit
-- If results are not reproducible, be transparent about it and retract if needed
-- 
+
+- Prevalence of academic governance and self-audit
+
+- If particular results are not reproducible, be transparent about it and retract if needed
 
 ]
 
----
-
-# Reproducibility failures in academia
-
-## [Reinhart-Rogoff](https://theconversation.com/the-reinhart-rogoff-error-or-how-not-to-excel-at-economics-13646) error
-
-&lt;img src="figs/reinhart-rogoff.png" width="50%" /&gt;
-
---
-
-## The recent [case](https://retractionwatch.com/2021/07/08/researchers-forfeit-10000-award-when-papers-findings-cant-be-replicated/) of _Journal of Finance_:
-
-&lt;img src="figs/retraction-jf.png" width="50%" /&gt;
 
 ---
+
 
 # Why we lack reproducibility?
 
-- researchers are human!
+- Researchers are human! An error can happen..
 
 --
 
-- bad incentives: publish or perish! 
+- Bad career incentives ( publish or perish!) and bad behavior.
 
--- 
+--
 
-- bad computational policies (aka "it works on my machine")
+- Bad computational policies (aka "it works on my machine") and lack of incentives for sharing code and data.
 
 ---
 
-# Tools for reproducibility
-
-- Version control (data/code/..) 
-  - Github (and friends)
-  - Dropbox/GoogleDrive/OneDrive/...
-
---
-
-- Intructions for running the code (perhaps in a code script?)
-
---
+# Tools for reproducibility in R (and others)
 
 - Well written paper! 
 
+--
+
+- Version control (data &amp; code) 
+
+  - **Git** (Github and friends)
+  
+  - **Cloud versioning** (Dropbox/GoogleDrive/OneDrive)
+
+--
+
+- Intructions for running the R code (perhaps in a git style Readme.md file?)
+
+--
+
+&gt; Example of reproducible paper: A Garch Tutorial with R - RAC  ([paper](https://rac.anpad.org.br/index.php/rac/article/view/1420)/[code](https://github.com/msperlin/GARCH-RAC)/[data](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/C4WHUJ))
+
 ---
 
-# R workshop
+# Reproducibility in R
+
+R offers a range of tools for keeping  your code reproducible
+
+- Project organization (files and folders)
+
+- Package versioning:
+
+  - `checkpoint`
+  
+  - `renv`
+  
+- Containerization with Docker 
+
+---
+
+# Project Organization
+
+- All R scripts numbered sequentially (import --&gt; clean --&gt; EDA --&gt; model)
+
+- Extra files and output in their own folder
+
+- Think of a research project as a R package, with its own folder structure
+
+--
+
+**A real life Example:**
+
+&lt;img src="figs/ExampleProject.png" width="349" /&gt;
+
+---
+
+# Package `renv`
+
+&gt; Inspired in Python's _venv_ , `renv` maintain records of all packages used within a project (similar to python)  and provides infrastructure for recording and restoring packages.
+
+--
+
+**How to use:**
+
+1) Install `renv` in R, set path to project folder (or open rstudio project file) and initialize with `renv::init()`
+
+2) Record packages with `renv::snapshot()`
+
+3) Restore (if needed) packages with `renv::restore()`
+
+---
+
+# Package `checkpoint`
+
+&gt; Package `checkpoint` is an initiative from [Microsoft](https://mran.microsoft.com/documents/rro/reproducibility/)
+to keep R code reproducible. 
+
+&gt; Unlike `renv` that finds packages from project, `checkpoint` uses time to set package versions and (**slowly**) create a private package repository.
+
+--
+
+**How to use**:
+
+1) install `checkpoint`, set a date you want to reach out
+
+2) go back in time with `checkpoint('2019-01-01')`
+
+---
+
+# Docker
+
+&gt; Containers are modular virtual enviroments that freezes a particular computer setup, mostly used in cloud computing.
+
+- Containers are the _state-of-art_  for code execution and reproducibility (it garantes a particular arquitecture, forever).
+
+- For R users, containers are mostly used in deploying shiny applications.
+
+--
+
+Dockerfile example:
+
+
+
+
+# Thanks!
 
 All code and data available at [Github](https://github.com/msperlin/reproducibility-with-R-talk)
 
