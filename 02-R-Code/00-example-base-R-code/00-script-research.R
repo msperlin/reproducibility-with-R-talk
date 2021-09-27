@@ -12,7 +12,7 @@ df_plot <- organize_data(df_info)
 
 p <- create_plot(df_plot)
 
-x11() ; p
+p
 
 ggsave(filename = 'output/plot.png', 
        plot = p, 

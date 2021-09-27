@@ -72,7 +72,7 @@ Governance and reproducibility!
 
 .pull-right[
 
-- All data and code should be shared and reproducible
+- All data and code should be shared and reproducible with popular programming languages
 
 - Prevalence of academic governance and self-audit
 
@@ -94,7 +94,11 @@ Governance and reproducibility!
 
 --
 
-- Bad computational policies (aka "it works on my machine") and lack of incentives for sharing code and data.
+- Lack of incentives for sharing code and data.
+
+--
+
+- Bad computational policies (aka "it works on my machine").
 
 ---
 
@@ -108,11 +112,11 @@ Governance and reproducibility!
 
   - **Git** (Github and friends)
   
-  - **Cloud versioning** (Dropbox/GoogleDrive/OneDrive)
+  - **Cloud backup and infrastructure** (Dropbox/Google Drive/One Drive)
 
 --
 
-- Intructions for running the R code (perhaps in a git style Readme.md file?)
+- Instructions for running the R code (perhaps in a git style Readme.md file?)
 
 --
 
@@ -126,7 +130,7 @@ R offers a range of tools for keeping  your code reproducible
 
 - Project organization (files and folders)
 
-- Package versioning:
+- Package version:
 
   - `checkpoint`
   
@@ -189,22 +193,52 @@ to keep R code reproducible.
 
 &gt; Containers are modular virtual enviroments that freezes a particular computer setup, mostly used in cloud computing.
 
-- Containers are the _state-of-art_  for code execution and reproducibility (it garantes a particular arquitecture, forever).
+- Containers are the _state-of-art_  for code execution and reproducibility (it guarantees a particular architecture, forever).
 
 - For R users, containers are mostly used in deploying shiny applications.
 
 --
 
-Dockerfile example:
+---
+
+## Dockerfile example:
 
 
+```r
+FROM rocker/tidyverse:4.1.0
 
+RUN R -e "install.packages('GetDFPData2')"
+
+WORKDIR /home/msperlin
+
+RUN mkdir output
+
+ADD R-code ./R-code
+
+#RUN mkdir /home/output
+RUN R -e "getwd()"
+
+RUN R -e "fs::dir_tree()"
+
+WORKDIR /home/msperlin/R-code
+
+CMD Rscript script-research.R
+```
+
+
+---
 
 # Thanks!
 
+
+```
+## 😄
+```
+
+
 All code and data available at [Github](https://github.com/msperlin/reproducibility-with-R-talk)
 
-- 
+[Personal site](https://www.msperlin.com/blog/)
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

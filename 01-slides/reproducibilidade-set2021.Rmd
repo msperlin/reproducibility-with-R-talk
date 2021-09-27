@@ -75,7 +75,7 @@ knitr::include_graphics('figs/359_9_f2.jpeg')
 
 .pull-right[
 
-- All data and code should be shared and reproducible
+- All data and code should be shared and reproducible with popular programming languages
 
 - Prevalence of academic governance and self-audit
 
@@ -97,7 +97,11 @@ knitr::include_graphics('figs/359_9_f2.jpeg')
 
 --
 
-- Bad computational policies (aka "it works on my machine") and lack of incentives for sharing code and data.
+- Lack of incentives for sharing code and data.
+
+--
+
+- Bad computational policies (aka "it works on my machine").
 
 ---
 
@@ -111,11 +115,11 @@ knitr::include_graphics('figs/359_9_f2.jpeg')
 
   - **Git** (Github and friends)
   
-  - **Cloud versioning** (Dropbox/GoogleDrive/OneDrive)
+  - **Cloud backup and infrastructure** (Dropbox/Google Drive/One Drive)
 
 --
 
-- Intructions for running the R code (perhaps in a git style Readme.md file?)
+- Instructions for running the R code (perhaps in a git style Readme.md file?)
 
 --
 
@@ -129,7 +133,7 @@ R offers a range of tools for keeping  your code reproducible
 
 - Project organization (files and folders)
 
-- Package versioning:
+- Package version:
 
   - `checkpoint`
   
@@ -194,15 +198,17 @@ to keep R code reproducible.
 
 > Containers are modular virtual enviroments that freezes a particular computer setup, mostly used in cloud computing.
 
-- Containers are the _state-of-art_  for code execution and reproducibility (it garantes a particular arquitecture, forever).
+- Containers are the _state-of-art_  for code execution and reproducibility (it guarantees a particular architecture, forever).
 
 - For R users, containers are mostly used in deploying shiny applications.
 
 --
 
-Dockerfile example:
+---
 
-```{r, eval=FALSE}
+## Dockerfile example:
+
+```{r, echo = TRUE, eval=FALSE}
 FROM rocker/tidyverse:4.1.0
 
 RUN R -e "install.packages('GetDFPData2')"
@@ -224,8 +230,15 @@ CMD Rscript script-research.R
 ```
 
 
+---
+
 # Thanks!
+
+```{r}
+emo::ji('smile')
+```
+
 
 All code and data available at [Github](https://github.com/msperlin/reproducibility-with-R-talk)
 
-- 
+[Personal site](https://www.msperlin.com/blog/)
